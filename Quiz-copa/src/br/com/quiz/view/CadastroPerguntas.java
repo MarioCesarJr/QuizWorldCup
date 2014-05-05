@@ -63,7 +63,7 @@ public class CadastroPerguntas extends JFrame {
 		
 		JLabel lblCadastroDePerguntas = new JLabel("Cadastro de Perguntas");
 		lblCadastroDePerguntas.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblCadastroDePerguntas.setIcon(new ImageIcon("C:\\Users\\junior\\workspace\\Quiz-copa\\img\\application32.png"));
+		lblCadastroDePerguntas.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\application32.png"));
 		lblCadastroDePerguntas.setBounds(20, 22, 259, 51);
 		contentPane.add(lblCadastroDePerguntas);
 		

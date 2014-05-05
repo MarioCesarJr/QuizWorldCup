@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaPrincipal extends JFrame {
 
@@ -49,6 +51,12 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnIniciar = new JButton("Iniciar");
+		btnIniciar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new CadastroJogador().setVisible(true);
+				setVisible(false);
+			}
+		});
 		btnIniciar.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnIniciar.setBounds(362, 249, 89, 23);
 		contentPane.add(btnIniciar);

@@ -52,7 +52,7 @@ public class CadastroJogador extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNome = new JLabel();
-		lblNome.setIcon(new ImageIcon("C:\\Users\\junior\\workspace\\Quiz-copa\\img\\fussballSmall.png"));
+		lblNome.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\fussballSmall.png"));
 		lblNome.setBounds(10, 0, 302, 276);
 		contentPane.add(lblNome);
 		
