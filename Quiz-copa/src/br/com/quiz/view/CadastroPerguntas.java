@@ -22,6 +22,8 @@ import br.com.quiz.model.Pergunta;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.TitledBorder;
+import javax.swing.JSeparator;
 
 public class CadastroPerguntas extends JFrame {
 
@@ -53,6 +55,7 @@ public class CadastroPerguntas extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastroPerguntas() {
+		setTitle("Cadastro de Perguntas");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 558, 484);
@@ -64,7 +67,7 @@ public class CadastroPerguntas extends JFrame {
 		JLabel lblCadastroDePerguntas = new JLabel("Cadastro de Perguntas");
 		lblCadastroDePerguntas.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblCadastroDePerguntas.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\application32.png"));
-		lblCadastroDePerguntas.setBounds(20, 22, 259, 51);
+		lblCadastroDePerguntas.setBounds(149, 22, 259, 51);
 		contentPane.add(lblCadastroDePerguntas);
 		
 		JLabel lblPergunta = new JLabel("Pergunta");
@@ -139,6 +142,7 @@ public class CadastroPerguntas extends JFrame {
 		bg.add(rdbtnDificil);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\back16.png"));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new TelaPrincipal().setVisible(true);
@@ -149,6 +153,7 @@ public class CadastroPerguntas extends JFrame {
 		contentPane.add(btnVoltar);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\add1-16.png"));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -161,6 +166,16 @@ public class CadastroPerguntas extends JFrame {
 				perg.setAlternativaC(textAlternativaC.getText());
 				perg.setAlternativaD(textAlternativaD.getText());
 				perg.setRespostaCerta(textRespCerta.getText());
+				
+				if((textQuestao.getText().isEmpty())||
+				(textAlternativaA.getText().isEmpty())||
+				(textAlternativaB.getText().isEmpty())||
+				(textAlternativaC.getText().isEmpty())||
+				(textAlternativaD.getText().isEmpty())||
+				(textRespCerta.getText().isEmpty())){
+					
+					JOptionPane.showMessageDialog(null, "É obrigatório o preenchimento de todos os campos !");
+				}else
 				
 			    if(rdbtnFacil.isSelected()){
 			    	
@@ -184,12 +199,21 @@ public class CadastroPerguntas extends JFrame {
 			    
 			  }
 		});
-		btnCadastrar.setBounds(124, 401, 109, 23);
+		btnCadastrar.setBounds(124, 401, 121, 23);
 		contentPane.add(btnCadastrar);
 		
 		JLabel lblNvel = new JLabel("N\u00EDvel :");
 		lblNvel.setBounds(20, 361, 78, 14);
 		contentPane.add(lblNvel);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.setBounds(10, 78, 532, 272);
+		contentPane.add(panel);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 387, 532, 3);
+		contentPane.add(separator);
 	}
 	
 	void limparCampos(){

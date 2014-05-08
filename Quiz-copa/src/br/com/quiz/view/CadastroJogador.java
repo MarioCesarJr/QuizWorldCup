@@ -44,6 +44,8 @@ public class CadastroJogador extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastroJogador() {
+		setTitle("Cadastro de Jogador");
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 593, 325);
 		contentPane = new JPanel();
@@ -83,6 +85,7 @@ public class CadastroJogador extends JFrame {
 		bg.add(rdbtnDifcil);
 		
 		JButton btnIniciarQuiz = new JButton("Iniciar Quiz");
+		btnIniciarQuiz.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\add1-16.png"));
 		btnIniciarQuiz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -96,10 +99,11 @@ public class CadastroJogador extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnIniciarQuiz.setBounds(337, 230, 109, 23);
+		btnIniciarQuiz.setBounds(322, 230, 124, 23);
 		contentPane.add(btnIniciarQuiz);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\back16.png"));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

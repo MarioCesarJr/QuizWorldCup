@@ -68,6 +68,7 @@ public class TelaPerguntas extends JFrame {
 
 	
 	public TelaPerguntas() {
+			setTitle("Perguntas");
 			setResizable(false);
 		
        this.con = new ConnectionFactory().getConnection();
@@ -83,7 +84,7 @@ public class TelaPerguntas extends JFrame {
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 819, 452);
+		setBounds(100, 100, 819, 470);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -206,6 +207,7 @@ public class TelaPerguntas extends JFrame {
 			contentPane.add(buttonAltD);
 			
 			btnProximaPergunta = new JButton("Pular pergunta");
+			btnProximaPergunta.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\up24.png"));
 			btnProximaPergunta.setBackground(new Color(154, 205, 50));
 			btnProximaPergunta.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent a) {
@@ -237,13 +239,13 @@ public class TelaPerguntas extends JFrame {
 					}
 				}
 			});
-			btnProximaPergunta.setBounds(542, 380, 178, 23);
+			btnProximaPergunta.setBounds(575, 393, 178, 38);
 			contentPane.add(btnProximaPergunta);
 			
 			lblNewLabel = new JLabel("New label");
 			lblNewLabel.setIcon(new ImageIcon("C:\\Users\\junior\\workspace\\Quiz\\img\\simple_greenHD.jpg"));
 			lblNewLabel.setBackground(new Color(153, 204, 51));
-			lblNewLabel.setBounds(0, 0, 813, 424);
+			lblNewLabel.setBounds(0, 0, 813, 369);
 			contentPane.add(lblNewLabel);
 			
 							
