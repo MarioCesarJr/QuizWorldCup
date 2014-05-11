@@ -73,12 +73,25 @@ public class TelaPrincipal extends JFrame {
 		});
 		btnIniciar.setFont(new Font("Tahoma", Font.BOLD, 15));
 		
-		JButton btnOpo = new JButton("Op\u00E7\u00E3o");
+		JButton btnOpo = new JButton("Opcões");
+		btnOpo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new TelaOpcao().setVisible(true);
+				setVisible(false);
+			}
+		});
 		btnOpo.setBackground(Color.LIGHT_GRAY);
 		btnOpo.setBounds(117, 15, 89, 23);
 		panel.add(btnOpo);
 		
 		JButton btnRanking = new JButton("Ranking");
+		btnRanking.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaRanking tr = new TelaRanking();
+				tr.setLocationRelativeTo(null);
+				tr.setVisible(true);
+			}
+		});
 		btnRanking.setBackground(Color.LIGHT_GRAY);
 		btnRanking.setBounds(559, 15, 89, 23);
 		panel.add(btnRanking);

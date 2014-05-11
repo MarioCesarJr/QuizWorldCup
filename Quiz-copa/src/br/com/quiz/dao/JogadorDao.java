@@ -19,7 +19,7 @@ public class JogadorDao {
 	}
 
 	public void gravarJogador(Jogador jogador) {
-		String sql = "insert into jogador " + "(nome,pontuacao)" + " values (?,?)";
+		String sql = "insert into jogadores " + "(nome,pontuacao)" + " values (?,?)";
 		try {
 			// prepared statement para inserção
 			PreparedStatement stmt = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
@@ -39,13 +39,13 @@ public class JogadorDao {
 	public List<Jogador> getLista() {
 		try {
 			List<Jogador> jogadores = new ArrayList<Jogador>();
-			PreparedStatement stmt = this.connection.prepareStatement("select * from jogador");
+			PreparedStatement stmt = this.connection.prepareStatement("select * from jogadores");
 			ResultSet rs = stmt.executeQuery(); // recebe o PreparedStatement 
 
 			while (rs.next()) {
 				// criando o objeto Jogador
 				Jogador jogador = new Jogador();
-				jogador.setId(rs.getInt("id"));
+				jogador.setId(rs.getInt("idJogadores"));
 				jogador.setNome(rs.getString("nome"));
 				jogador.setPontuacao(rs.getInt("pontuacao"));
 		
@@ -62,7 +62,7 @@ public class JogadorDao {
 	}
 	
 	public void update(Jogador jogador) {
-		String sql = "update jogador set nome=?, pontuacao=?, where id=?";
+		String sql = "update jogadores set nome=?, pontuacao=?, where id=?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);

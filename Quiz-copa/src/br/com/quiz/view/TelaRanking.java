@@ -2,21 +2,29 @@ package br.com.quiz.view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.ScrollPane;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
 import java.awt.FlowLayout;
+import java.util.List;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+
+import br.com.quiz.dao.JogadorDao;
+import br.com.quiz.model.JogadorTableModel;
 
 public class TelaRanking extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
+
 
 	/**
 	 * Launch the application.
@@ -26,6 +34,7 @@ public class TelaRanking extends JFrame {
 			public void run() {
 				try {
 					TelaRanking frame = new TelaRanking();
+				    frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,44 +47,21 @@ public class TelaRanking extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaRanking() {
-		setResizable(false);
 		setTitle("Ranking");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 253, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		setResizable(false);
+
+		JogadorDao dao  = new JogadorDao();
+		JogadorTableModel jm = new JogadorTableModel(dao);
 		
-		JPanel panel = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
-		flowLayout.setVgap(12);
-		flowLayout.setHgap(7);
-		panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(10, 96, 223, 155);
-		contentPane.add(panel);
+			
+		JTable table = new JTable(jm);
+
+		JScrollPane scroll = new JScrollPane();
+		scroll.setViewportView(table);
+		getContentPane().add(scroll);
+		setSize(500, 280);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Nome", "Pontua\u00E7\u00E3o"},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-			},
-			new String[] {
-				"Nome ", "Pontua\u00E7\u00E3o"
-			}
-		));
-		table.getColumnModel().getColumn(0).setPreferredWidth(118);
-		panel.add(table);
 		
-		JLabel lblRnking = new JLabel("Ranking");
-		lblRnking.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\football_128x128.png"));
-		lblRnking.setBounds(10, 11, 182, 74);
-		contentPane.add(lblRnking);
+	
 	}
 }

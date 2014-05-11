@@ -24,7 +24,7 @@ public class PerguntaDao  {
 	}
 	
 	public void gravarPergunta(Pergunta pergunta) {
-		String sql = "insert into pergunta " + "(questao,alternativaA,alternativaB,alternativaC,alternativaD,respostaCerta,nivel)" + " values (?,?,?,?,?,?,?)";
+		String sql = "insert into perguntas " + "(questao,alter_a,alter_b,alter_c,alter_d,resp_certa,nivel)" + " values (?,?,?,?,?,?,?)";
 		try {
 			// prepared statement para inserção
 			PreparedStatement stmt = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
@@ -35,7 +35,7 @@ public class PerguntaDao  {
 			stmt.setString(4, pergunta.getAlternativaC());
 			stmt.setString(5, pergunta.getAlternativaD());
 			stmt.setString(6, pergunta.getRespostaCerta());
-			stmt.setString(7, pergunta.getNivel());
+			stmt.setInt(7, pergunta.getNivel());
 
 			// executa
 			stmt.execute();
@@ -50,7 +50,7 @@ public class PerguntaDao  {
 		public List<Pergunta> getLista() {
 			try {
 				List<Pergunta> perguntas = new ArrayList<Pergunta>();
-				PreparedStatement stmt = this.connection.prepareStatement("select * from pergunta");
+				PreparedStatement stmt = this.connection.prepareStatement("select * from perguntas");
 				ResultSet rs = stmt.executeQuery(); // recebe o PreparedStatement 
 
 				rs.next();

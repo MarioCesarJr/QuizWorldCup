@@ -9,7 +9,7 @@ public class Pergunta {
 	private String alternativaC;
 	private String alternativaD;
 	private String respostaCerta;
-	private String nivel;
+	private int nivel;
 
 	public int getIdPergunta() {
 		return idPergunta;
@@ -67,11 +67,11 @@ public class Pergunta {
 		this.respostaCerta = respostaCerta;
 	}
 
-	public String getNivel() {
+	public int getNivel() {
 		return nivel;
 	}
 
-	public void setNivel(String nivel) {
+	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
 
@@ -88,7 +88,7 @@ public class Pergunta {
 		result = prime * result
 				+ ((alternativaD == null) ? 0 : alternativaD.hashCode());
 		result = prime * result + idPergunta;
-		result = prime * result + ((nivel == null) ? 0 : nivel.hashCode());
+		result = prime * result + nivel;
 		result = prime * result + ((questao == null) ? 0 : questao.hashCode());
 		result = prime * result
 				+ ((respostaCerta == null) ? 0 : respostaCerta.hashCode());
@@ -126,10 +126,7 @@ public class Pergunta {
 			return false;
 		if (idPergunta != other.idPergunta)
 			return false;
-		if (nivel == null) {
-			if (other.nivel != null)
-				return false;
-		} else if (!nivel.equals(other.nivel))
+		if (nivel != other.nivel)
 			return false;
 		if (questao == null) {
 			if (other.questao != null)

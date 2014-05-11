@@ -37,6 +37,8 @@ public class TelaPerguntas extends JFrame {
 	private java.sql.Connection con;
 	ResultSet rs;
 	int pontos;
+	int nivel;
+	
 	/**
 	 * 
 	 */
@@ -70,18 +72,21 @@ public class TelaPerguntas extends JFrame {
 	public TelaPerguntas() {
 			setTitle("Perguntas");
 			setResizable(false);
-		
+			
+	    
        this.con = new ConnectionFactory().getConnection();
-		
-		try {
-			Statement stmt = (Statement) con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-		rs= stmt.executeQuery("select * from pergunta ORDER BY RAND() LIMIT 10");
-	             
-		} catch (SQLException e) {
+      		
+      
+       try {
+      
+			Statement stmt = (Statement) con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);	
+	    
+			rs= stmt.executeQuery("select * from perguntas where nivel = 3 ORDER BY RAND() LIMIT 10");
+	     
+	      } catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 819, 470);
@@ -90,7 +95,7 @@ public class TelaPerguntas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		       final Pergunta pergunta = new Pergunta();
+		final Pergunta pergunta = new Pergunta(); 
 		             final Jogador jog = new Jogador();
 		
    		
@@ -102,15 +107,15 @@ public class TelaPerguntas extends JFrame {
 			label.setBounds(33, 34, 761, 51);
 			contentPane.add(label);
 
-		    buttonAltA = new JButton(rs.getString("alternativaA"));
+		    buttonAltA = new JButton(rs.getString("alter_a"));
 		    buttonAltA.setForeground(new Color(0, 0, 0));
 		    buttonAltA.setBackground(new Color(154, 205, 50));
 			buttonAltA.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent a) {
 					a.getActionCommand();
 					try {
-						pergunta.setAlternativaA(rs.getString("alternativaA"));
-						pergunta.setRespostaCerta(rs.getString("respostaCerta"));
+						pergunta.setAlternativaA(rs.getString("alter_a"));
+						pergunta.setRespostaCerta(rs.getString("resp_certa"));
 			
 					} catch (SQLException e) {
 						
@@ -128,15 +133,15 @@ public class TelaPerguntas extends JFrame {
 			buttonAltA.setBounds(46, 96, 707, 49);
 			contentPane.add(buttonAltA);
 
-		    buttonAltB = new JButton(rs.getString("alternativaB"));
+		    buttonAltB = new JButton(rs.getString("alter_b"));
 		    buttonAltB.setForeground(new Color(0, 0, 0));
 		    buttonAltB.setBackground(new Color(154, 205, 50));
 			buttonAltB.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					e.getActionCommand();
 					try {
-						pergunta.setAlternativaA(rs.getString("alternativaB"));
-						pergunta.setRespostaCerta(rs.getString("respostaCerta"));
+						pergunta.setAlternativaA(rs.getString("alter_b"));
+						pergunta.setRespostaCerta(rs.getString("resp_certa"));
 		
 					} catch (SQLException e1) {
 						
@@ -154,15 +159,15 @@ public class TelaPerguntas extends JFrame {
 			buttonAltB.setBounds(46, 167, 707, 48);
 			contentPane.add(buttonAltB);
 
-		    buttonAltC = new JButton(rs.getString("alternativaC"));
+		    buttonAltC = new JButton(rs.getString("alter_c"));
 		    buttonAltC.setForeground(new Color(0, 0, 0));
 		    buttonAltC.setBackground(new Color(154, 205, 50));
 			buttonAltC.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					e.getActionCommand();
 					try {
-						pergunta.setAlternativaA(rs.getString("alternativaC"));
-						pergunta.setRespostaCerta(rs.getString("respostaCerta"));
+						pergunta.setAlternativaA(rs.getString("alter_c"));
+						pergunta.setRespostaCerta(rs.getString("resp_certa"));
 		
 					} catch (SQLException e2) {
 						
@@ -180,15 +185,15 @@ public class TelaPerguntas extends JFrame {
 		    buttonAltC.setBounds(46, 235, 707, 48);
 			contentPane.add(buttonAltC);
 
-		    buttonAltD = new JButton(rs.getString("alternativaD"));
+		    buttonAltD = new JButton(rs.getString("alter_d"));
 		    buttonAltD.setForeground(new Color(0, 0, 0));
 		    buttonAltD.setBackground(new Color(154, 205, 50));
 			buttonAltD.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					e.getActionCommand();
 					try {
-						pergunta.setAlternativaA(rs.getString("alternativaD"));
-						pergunta.setRespostaCerta(rs.getString("respostaCerta"));
+						pergunta.setAlternativaA(rs.getString("alter_d"));
+						pergunta.setRespostaCerta(rs.getString("resp_certa"));
 			
 					} catch (SQLException e3) {
 						
@@ -217,10 +222,10 @@ public class TelaPerguntas extends JFrame {
 						
 					    rs.next();
 						label.setText(rs.getString("questao"));
-					    buttonAltA.setText(rs.getString("alternativaA"));
-						buttonAltB.setText(rs.getString("alternativaB"));
-						buttonAltC.setText(rs.getString("alternativaC"));
-						buttonAltD.setText(rs.getString("alternativaD"));
+					    buttonAltA.setText(rs.getString("alter_a"));
+						buttonAltB.setText(rs.getString("alter_b"));
+						buttonAltC.setText(rs.getString("alter_c"));
+						buttonAltD.setText(rs.getString("alter_d"));
 						
 						jog.reduzirPulos(1);;
 						
@@ -260,10 +265,10 @@ public class TelaPerguntas extends JFrame {
 		try {
 			rs.next();
 			label.setText(rs.getString("questao"));
-		    buttonAltA.setText(rs.getString("alternativaA"));
-			buttonAltB.setText(rs.getString("alternativaB"));
-			buttonAltC.setText(rs.getString("alternativaC"));
-			buttonAltD.setText(rs.getString("alternativaD"));
+		    buttonAltA.setText(rs.getString("alter_a"));
+			buttonAltB.setText(rs.getString("alter_b"));
+			buttonAltC.setText(rs.getString("alter_c"));
+			buttonAltD.setText(rs.getString("alter_d"));
 	 
 			if(rs.isLast()){
 				JOptionPane.showMessageDialog(null, "total de Acertos : "+pontos);
@@ -275,6 +280,8 @@ public class TelaPerguntas extends JFrame {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	}
 	
 	

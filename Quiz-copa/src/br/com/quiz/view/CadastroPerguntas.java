@@ -179,19 +179,19 @@ public class CadastroPerguntas extends JFrame {
 				
 			    if(rdbtnFacil.isSelected()){
 			    	
-			    	perg.setNivel("facil");
+			    	perg.setNivel(1);
 			    	dao.gravarPergunta(perg);
 			        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso !");
 			        limparCampos();
 			    }else if(rdbtnMedio.isSelected()){
 			    	
-			    	perg.setNivel("medio");
+			    	perg.setNivel(2);
 			    	dao.gravarPergunta(perg);
 			    	JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso !");
 			    	limparCampos();
 			    }else if(rdbtnDificil.isSelected()){
 			    	
-			    	perg.setNivel("dificil");
+			    	perg.setNivel(3);
 			    	dao.gravarPergunta(perg);
 			    	JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso !");
 			    	limparCampos();
