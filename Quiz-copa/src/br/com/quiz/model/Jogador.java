@@ -42,6 +42,11 @@ public class Jogador {
 	public void reduzirPulos(int pulo) {
 		this.pulos = this.pulos - pulo;
 	}
+	
+	public void somaPontos(int pontos){
+		
+		this.pontuacao = this.pontuacao+pontos;
+	}
 
 	@Override
 	public int hashCode() {

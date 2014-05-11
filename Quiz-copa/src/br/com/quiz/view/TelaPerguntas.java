@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 
+import br.com.quiz.dao.JogadorDao;
 import br.com.quiz.factory.ConnectionFactory;
 import br.com.quiz.model.Jogador;
 import br.com.quiz.model.Pergunta;
@@ -38,6 +39,7 @@ public class TelaPerguntas extends JFrame {
 	ResultSet rs;
 	int pontos;
 	int nivel;
+	String nomeJog;
 	
 	/**
 	 * 
@@ -81,7 +83,7 @@ public class TelaPerguntas extends JFrame {
       
 			Statement stmt = (Statement) con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);	
 	    
-			rs= stmt.executeQuery("select * from perguntas where nivel = 3 ORDER BY RAND() LIMIT 10");
+			rs= stmt.executeQuery("select * from perguntas where nivel = 1 ORDER BY RAND() LIMIT 11");
 	     
 	      } catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -122,7 +124,7 @@ public class TelaPerguntas extends JFrame {
 						e.printStackTrace();
 					}
 				if(a.getActionCommand().equals(pergunta.getRespostaCerta())){
-						 pontos = pontos+1;
+						 pontos = pontos+10;
 					JOptionPane.showMessageDialog(null, "Certo ");
 							}else{
 								JOptionPane.showMessageDialog(null, "Errado");
@@ -148,7 +150,7 @@ public class TelaPerguntas extends JFrame {
 						e1.printStackTrace();
 					}
 				if(e.getActionCommand().equals(pergunta.getRespostaCerta())){
-					 pontos = pontos+1;
+					 pontos = pontos+10;
 					JOptionPane.showMessageDialog(null, "Certo");
 									}else{
 								JOptionPane.showMessageDialog(null, "Errado");
@@ -174,7 +176,7 @@ public class TelaPerguntas extends JFrame {
 						e2.printStackTrace();
 					}
 				if(e.getActionCommand().equals(pergunta.getRespostaCerta())){
-					 pontos = pontos+1;
+					 pontos = pontos+10;
 					JOptionPane.showMessageDialog(null, "Certo");
 			}else{
 								JOptionPane.showMessageDialog(null, "Errado");
@@ -200,7 +202,7 @@ public class TelaPerguntas extends JFrame {
 						e3.printStackTrace();
 					}
 				if(e.getActionCommand().equals(pergunta.getRespostaCerta())){
-					 pontos = pontos+1;
+					 pontos = pontos+10;
 								JOptionPane.showMessageDialog(null, "Certo");
 							}else{
 								JOptionPane.showMessageDialog(null, "Errado");
@@ -271,10 +273,22 @@ public class TelaPerguntas extends JFrame {
 			buttonAltD.setText(rs.getString("alter_d"));
 	 
 			if(rs.isLast()){
-				JOptionPane.showMessageDialog(null, "total de Acertos : "+pontos);
+				JogadorDao jd = new JogadorDao();
+				Jogador jog = new Jogador();
+				
+				JOptionPane.showMessageDialog(null, "total de Pontos : "+pontos);
+			    nomeJog = JOptionPane.showInputDialog("<< Digite um nome para salvar no Ranking >>");
+				
+				jog.setNome(nomeJog);
+				jog.setPontuacao(pontos);
+				if(nomeJog!=null){
+					jd.gravarJogador(jog);
+					new TelaPrincipal().setVisible(true);
+					setVisible(false);
+				}else{
 				new TelaPrincipal().setVisible(true);
 				setVisible(false);
-			}
+				}}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

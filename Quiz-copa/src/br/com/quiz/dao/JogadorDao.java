@@ -39,7 +39,7 @@ public class JogadorDao {
 	public List<Jogador> getLista() {
 		try {
 			List<Jogador> jogadores = new ArrayList<Jogador>();
-			PreparedStatement stmt = this.connection.prepareStatement("select * from jogadores");
+			PreparedStatement stmt = this.connection.prepareStatement("select * from jogadores ORDER BY pontuacao DESC");
 			ResultSet rs = stmt.executeQuery(); // recebe o PreparedStatement 
 
 			while (rs.next()) {
