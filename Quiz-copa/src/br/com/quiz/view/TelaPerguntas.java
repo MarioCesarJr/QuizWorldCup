@@ -40,6 +40,7 @@ public class TelaPerguntas extends JFrame {
 	int pontos;
 	int nivel;
 	String nomeJog;
+	int erros;
 	
 	/**
 	 * 
@@ -127,6 +128,7 @@ public class TelaPerguntas extends JFrame {
 						 pontos = pontos+10;
 					JOptionPane.showMessageDialog(null, "Certo ");
 							}else{
+								erros = erros+1;
 								JOptionPane.showMessageDialog(null, "Errado");
 							}
 				proximaPergunta();
@@ -153,6 +155,7 @@ public class TelaPerguntas extends JFrame {
 					 pontos = pontos+10;
 					JOptionPane.showMessageDialog(null, "Certo");
 									}else{
+										erros = erros+1;
 								JOptionPane.showMessageDialog(null, "Errado");
 							}
 				proximaPergunta();     
@@ -179,6 +182,7 @@ public class TelaPerguntas extends JFrame {
 					 pontos = pontos+10;
 					JOptionPane.showMessageDialog(null, "Certo");
 			}else{
+				erros = erros+1;
 								JOptionPane.showMessageDialog(null, "Errado");
 							}
 				proximaPergunta();	
@@ -205,6 +209,7 @@ public class TelaPerguntas extends JFrame {
 					 pontos = pontos+10;
 								JOptionPane.showMessageDialog(null, "Certo");
 							}else{
+								erros = erros+1;
 								JOptionPane.showMessageDialog(null, "Errado");
 							}
 				proximaPergunta();	
@@ -255,6 +260,18 @@ public class TelaPerguntas extends JFrame {
 			lblNewLabel.setBounds(0, 0, 813, 369);
 			contentPane.add(lblNewLabel);
 			
+			JButton btnSair = new JButton("Sair");
+			btnSair.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					new TelaPrincipal().setVisible(true);
+					setVisible(false);
+				}
+			});
+			btnSair.setBackground(new Color(154, 205, 50));
+			btnSair.setFont(new Font("Tahoma", Font.BOLD, 12));
+			btnSair.setBounds(33, 401, 89, 23);
+			contentPane.add(btnSair);
+			
 							
 		    } catch (SQLException e1) {
 				// TODO Auto-generated catch block
@@ -272,6 +289,13 @@ public class TelaPerguntas extends JFrame {
 			buttonAltC.setText(rs.getString("alter_c"));
 			buttonAltD.setText(rs.getString("alter_d"));
 	 
+			if(erros==3){   
+				
+				JOptionPane.showMessageDialog(null, "GAME OVER !");    
+			
+			new TelaPrincipal().setVisible(true);
+			setVisible(false);
+			}
 			if(rs.isLast()){
 				JogadorDao jd = new JogadorDao();
 				Jogador jog = new Jogador();
@@ -294,8 +318,6 @@ public class TelaPerguntas extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	
-	
 	}
 	
 	
