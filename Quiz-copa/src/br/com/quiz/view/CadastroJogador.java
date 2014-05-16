@@ -89,11 +89,11 @@ public class CadastroJogador extends JFrame {
 		btnIniciarQuiz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Jogador jog = new Jogador();
+				/**Jogador jog = new Jogador();
 				JogadorDao dao = new JogadorDao();
 				
 				jog.setNome(textNome.getText());
-				dao.gravarJogador(jog);
+				dao.gravarJogador(jog);*/
 				
 				new TelaPerguntas().setVisible(true);
 				setVisible(false);

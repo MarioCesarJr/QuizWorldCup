@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 
@@ -26,6 +28,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 import java.awt.Font;
+import java.io.BufferedWriter;
 
 
 public class TelaPerguntas extends JFrame {
@@ -35,6 +38,7 @@ public class TelaPerguntas extends JFrame {
 	JButton buttonAltB;
 	JButton buttonAltC;
 	JButton buttonAltD;
+	JTextArea textArea;
 	private java.sql.Connection con;
 	ResultSet rs;
 	int pontos;
@@ -84,7 +88,7 @@ public class TelaPerguntas extends JFrame {
       
 			Statement stmt = (Statement) con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);	
 	    
-			rs= stmt.executeQuery("select * from perguntas where nivel = 1 ORDER BY RAND() LIMIT 11");
+			rs= stmt.executeQuery("select * from perguntas where nivel = 2 ORDER BY RAND() LIMIT 11");
 	     
 	      } catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -92,7 +96,7 @@ public class TelaPerguntas extends JFrame {
 		}
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 819, 470);
+		setBounds(100, 100, 830, 470);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -104,11 +108,22 @@ public class TelaPerguntas extends JFrame {
    		
 		    try {
 		    	rs.next();
-			label = new JLabel(rs.getString("questao"));
+		    
+		    textArea = new JTextArea(rs.getString("questao"));
+		    textArea.setEditable(false);
+		    textArea.setBackground(new Color(154, 205, 50));
+		    textArea.setForeground(new Color(204, 255, 204));
+		    textArea.setFont(new Font("Tahoma", Font.BOLD, 15));
+		    textArea.setBounds(33, 30, 761, 55);
+		    textArea.setLineWrap(true);
+		    textArea.setWrapStyleWord(true);
+		    contentPane.add(textArea);
+		    
+			/**label = new JLabel(rs.getString("questao"));
 			label.setForeground(new Color(204, 255, 204));
 			label.setFont(new Font("Tahoma", Font.BOLD, 15));
 			label.setBounds(33, 34, 761, 51);
-			contentPane.add(label);
+			contentPane.add(label);*/
 
 		    buttonAltA = new JButton(rs.getString("alter_a"));
 		    buttonAltA.setForeground(new Color(0, 0, 0));
@@ -134,7 +149,7 @@ public class TelaPerguntas extends JFrame {
 				proximaPergunta();
 				}
 			});
-			buttonAltA.setBounds(46, 96, 707, 49);
+			buttonAltA.setBounds(62, 96, 707, 49);
 			contentPane.add(buttonAltA);
 
 		    buttonAltB = new JButton(rs.getString("alter_b"));
@@ -161,7 +176,7 @@ public class TelaPerguntas extends JFrame {
 				proximaPergunta();     
 				}
 			});
-			buttonAltB.setBounds(46, 167, 707, 48);
+			buttonAltB.setBounds(62, 160, 707, 48);
 			contentPane.add(buttonAltB);
 
 		    buttonAltC = new JButton(rs.getString("alter_c"));
@@ -188,7 +203,7 @@ public class TelaPerguntas extends JFrame {
 				proximaPergunta();	
 				}
 			});
-		    buttonAltC.setBounds(46, 235, 707, 48);
+		    buttonAltC.setBounds(62, 224, 707, 48);
 			contentPane.add(buttonAltC);
 
 		    buttonAltD = new JButton(rs.getString("alter_d"));
@@ -215,7 +230,7 @@ public class TelaPerguntas extends JFrame {
 				proximaPergunta();	
 				}
 			});
-			buttonAltD.setBounds(47, 305, 707, 44);
+			buttonAltD.setBounds(62, 291, 707, 44);
 			contentPane.add(buttonAltD);
 			
 			btnProximaPergunta = new JButton("Pular pergunta");
@@ -228,7 +243,7 @@ public class TelaPerguntas extends JFrame {
 						if(jog.getPulos()>0){
 						
 					    rs.next();
-						label.setText(rs.getString("questao"));
+						textArea.setText(rs.getString("questao"));
 					    buttonAltA.setText(rs.getString("alter_a"));
 						buttonAltB.setText(rs.getString("alter_b"));
 						buttonAltC.setText(rs.getString("alter_c"));
@@ -251,13 +266,13 @@ public class TelaPerguntas extends JFrame {
 					}
 				}
 			});
-			btnProximaPergunta.setBounds(575, 393, 178, 38);
+			btnProximaPergunta.setBounds(591, 394, 178, 38);
 			contentPane.add(btnProximaPergunta);
 			
 			lblNewLabel = new JLabel("New label");
 			lblNewLabel.setIcon(new ImageIcon("C:\\Users\\junior\\workspace\\Quiz\\img\\simple_greenHD.jpg"));
 			lblNewLabel.setBackground(new Color(153, 204, 51));
-			lblNewLabel.setBounds(0, 0, 813, 369);
+			lblNewLabel.setBounds(0, 0, 824, 369);
 			contentPane.add(lblNewLabel);
 			
 			JButton btnSair = new JButton("Sair");
@@ -283,7 +298,8 @@ public class TelaPerguntas extends JFrame {
 	public void proximaPergunta(){
 		try {
 			rs.next();
-			label.setText(rs.getString("questao"));
+			//label.setText(rs.getString("questao"));
+			textArea.setText(rs.getString("questao"));
 		    buttonAltA.setText(rs.getString("alter_a"));
 			buttonAltB.setText(rs.getString("alter_b"));
 			buttonAltC.setText(rs.getString("alter_c"));
