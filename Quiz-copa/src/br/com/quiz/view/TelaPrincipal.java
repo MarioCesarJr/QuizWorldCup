@@ -51,7 +51,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\Arena.png"));
+		lblNewLabel.setIcon(new ImageIcon("img/Arena.png"));
 		lblNewLabel.setBounds(0, 0, 744, 401);
 		contentPane.add(lblNewLabel);
 		
@@ -67,7 +67,8 @@ public class TelaPrincipal extends JFrame {
 		btnIniciar.setBackground(new Color(204, 204, 204));
 		btnIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new CadastroJogador().setVisible(true);
+				
+				new TelaPerguntas().setVisible(true);
 				setVisible(false);
 			}
 		});

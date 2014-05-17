@@ -42,7 +42,6 @@ public class TelaPerguntas extends JFrame {
 	private java.sql.Connection con;
 	ResultSet rs;
 	int pontos;
-	int nivel;
 	String nomeJog;
 	int erros;
 	
@@ -54,7 +53,11 @@ public class TelaPerguntas extends JFrame {
 	private JPanel contentPane;
 	private JButton btnProximaPergunta;
 	private JLabel lblNewLabel;
-
+    
+	
+	class TelaOp extends TelaOpcao{
+		
+	}
 	/**
 	 * Launch the application.
 	 */
@@ -83,18 +86,55 @@ public class TelaPerguntas extends JFrame {
 	    
        this.con = new ConnectionFactory().getConnection();
       		
-      
+      if(TelaOp.nivel==1){
        try {
       
 			Statement stmt = (Statement) con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);	
 	    
-			rs= stmt.executeQuery("select * from perguntas where nivel = 2 ORDER BY RAND() LIMIT 11");
+			rs= stmt.executeQuery("select * from perguntas where nivel = 1 ORDER BY RAND() LIMIT 11");
 	     
 	      } catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}}else if(TelaOp.nivel==2){
+			
+			try {
+			      
+				Statement stmt = (Statement) con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);	
+		    
+				rs= stmt.executeQuery("select * from perguntas where nivel = 2 ORDER BY RAND() LIMIT 11");
+		     
+		      } catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
+		}else if(TelaOp.nivel==3){
+				
+				try {
+				      
+					Statement stmt = (Statement) con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);	
+			    
+					rs= stmt.executeQuery("select * from perguntas where nivel = 3 ORDER BY RAND() LIMIT 11");
+			     
+			      } catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+			
+		}else{
+			
+			try {
+			      
+				Statement stmt = (Statement) con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);	
+		    
+				rs= stmt.executeQuery("select * from perguntas where nivel = 2 ORDER BY RAND() LIMIT 11");
+		     
+		      } catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 830, 470);
 		contentPane = new JPanel();
@@ -230,7 +270,7 @@ public class TelaPerguntas extends JFrame {
 			contentPane.add(buttonAltD);
 			
 			btnProximaPergunta = new JButton("Pular pergunta");
-			btnProximaPergunta.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\up24.png"));
+			btnProximaPergunta.setIcon(new ImageIcon("img/up24.png"));
 			btnProximaPergunta.setBackground(new Color(154, 205, 50));
 			btnProximaPergunta.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent a) {
@@ -266,7 +306,7 @@ public class TelaPerguntas extends JFrame {
 			contentPane.add(btnProximaPergunta);
 			
 			lblNewLabel = new JLabel("New label");
-			lblNewLabel.setIcon(new ImageIcon("C:\\Users\\junior\\workspace\\Quiz\\img\\simple_greenHD.jpg"));
+			lblNewLabel.setIcon(new ImageIcon("img/simple_greenHD.jpg"));
 			lblNewLabel.setBackground(new Color(153, 204, 51));
 			lblNewLabel.setBounds(0, 0, 824, 369);
 			contentPane.add(lblNewLabel);

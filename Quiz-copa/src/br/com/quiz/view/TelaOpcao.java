@@ -29,7 +29,7 @@ public class TelaOpcao extends JFrame {
 	JRadioButton rdbtnFcil;
 	JRadioButton rdbtnMedio;
 	JRadioButton rdbtnDifcil;
-	
+	static int nivel;
 
 	/**
 	 * Launch the application.
@@ -94,18 +94,27 @@ public class TelaOpcao extends JFrame {
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent a) {	
-			   
+			public void actionPerformed(ActionEvent a) {
+			if(rdbtnFcil.isSelected()){
+				nivel=1;
+			}else if(rdbtnMedio.isSelected()){
+				  nivel=2;
+			  } else if(rdbtnDifcil.isSelected()){
+				  nivel=3;
+			  }else {
+				  nivel=2;
+			  }
+			
 		        new TelaPrincipal().setVisible(true);
 				setVisible(false);
 			}
 		});
-		btnVoltar.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\back16.png"));
+		btnVoltar.setIcon(new ImageIcon("img/back16.png"));
 		btnVoltar.setBounds(10, 210, 89, 23);
 		contentPane.add(btnVoltar);
 		
 		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\foot_butSmall.png"));
+		lblNewLabel.setIcon(new ImageIcon("img/foot_butSmall.png"));
 		lblNewLabel.setBounds(197, 11, 227, 240);
 		contentPane.add(lblNewLabel);
 		

@@ -66,7 +66,7 @@ public class CadastroPerguntas extends JFrame {
 		
 		JLabel lblCadastroDePerguntas = new JLabel("Cadastro de Perguntas");
 		lblCadastroDePerguntas.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblCadastroDePerguntas.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\application32.png"));
+		lblCadastroDePerguntas.setIcon(new ImageIcon("img/application32.png"));
 		lblCadastroDePerguntas.setBounds(149, 22, 259, 51);
 		contentPane.add(lblCadastroDePerguntas);
 		
@@ -142,7 +142,7 @@ public class CadastroPerguntas extends JFrame {
 		bg.add(rdbtnDificil);
 		
 		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\back16.png"));
+		btnVoltar.setIcon(new ImageIcon("img/back16.png"));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new TelaPrincipal().setVisible(true);
@@ -153,7 +153,7 @@ public class CadastroPerguntas extends JFrame {
 		contentPane.add(btnVoltar);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setIcon(new ImageIcon("C:\\Users\\junior\\git\\Quiz-worldcup\\Quiz-copa\\img\\add1-16.png"));
+		btnCadastrar.setIcon(new ImageIcon("img/add1-16.png"));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
