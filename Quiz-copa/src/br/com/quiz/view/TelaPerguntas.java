@@ -115,16 +115,12 @@ public class TelaPerguntas extends JFrame {
 		    textArea.setForeground(new Color(204, 255, 204));
 		    textArea.setFont(new Font("Tahoma", Font.BOLD, 15));
 		    textArea.setBounds(33, 30, 761, 55);
+		    textArea.setOpaque(false);
 		    textArea.setLineWrap(true);
 		    textArea.setWrapStyleWord(true);
 		    contentPane.add(textArea);
 		    
-			/**label = new JLabel(rs.getString("questao"));
-			label.setForeground(new Color(204, 255, 204));
-			label.setFont(new Font("Tahoma", Font.BOLD, 15));
-			label.setBounds(33, 34, 761, 51);
-			contentPane.add(label);*/
-
+			
 		    buttonAltA = new JButton(rs.getString("alter_a"));
 		    buttonAltA.setForeground(new Color(0, 0, 0));
 		    buttonAltA.setBackground(new Color(154, 205, 50));
