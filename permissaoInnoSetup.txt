@@ -1,0 +1,8 @@
+========== PERMISSAO DE USUARIO PARA ADICIONAR NO INSTALADOR INNO SETUP =============
+
+// acesso ao banco de dados embarcado HSQLDB
+
+[Dirs]
+
+Name: "{app}\"; Permissions: users-modify 
+                             everyone - ||
